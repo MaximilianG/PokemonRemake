@@ -16,6 +16,7 @@ public class PokemonData : ScriptableObject
     public int SpecialDefense;
     public Sprite FrontSprite;
     public Sprite BackSprite;
-    public Attack[] Attacks = new Attack[4];
-    public List<PokemonData> Evolves = new List<PokemonData>();
+    public Attack[] DefaultAttacks = new Attack[4];
+    public List<ScriptableEvolves.EvolveStruct> Evolves = new List<ScriptableEvolves.EvolveStruct>();
+    public List<ScriptableLearnableAttacks.LearnableAttackStruct> LearnableAttacks;
 }

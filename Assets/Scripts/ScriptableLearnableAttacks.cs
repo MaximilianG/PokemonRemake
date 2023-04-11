@@ -6,16 +6,21 @@ using UnityEngine;
 
 public class ScriptableLearnableAttacks : ScriptableObject
 {
-    public static List<LearnableAttackStruct> attacksToLearn = new List<LearnableAttackStruct>();
+    [SerializeField] private List<LearnableAttackStruct> LearnableAttacksList = new List<LearnableAttackStruct>();
 
     public void AddLearnableAttack()
     {
-        attacksToLearn.Add(new LearnableAttackStruct());
+        LearnableAttacksList.Add(new LearnableAttackStruct());
     }
 
     public void RemoveLearnableAttack(int i)
     {
-        attacksToLearn.Remove(attacksToLearn[i]);
+        LearnableAttacksList.Remove(LearnableAttacksList[i]);
+    }
+
+    public void RemoveLearnableAttack(LearnableAttackStruct _learnableAttackStruct)
+    {
+        LearnableAttacksList.Remove(_learnableAttackStruct);
     }
 
     [System.Serializable]
@@ -25,35 +30,39 @@ public class ScriptableLearnableAttacks : ScriptableObject
         public int level;
     }
 
-    public List<Attack> attacks
+    public List<LearnableAttackStruct> LearnableAttacksStructList
+    {
+        get { return LearnableAttacksList; }
+        set { LearnableAttacksList = value; }
+    }
+
+    public List<Attack> attacksList
     {
         get
         {
             List<Attack> attackListToReturn = new List<Attack>();
-            foreach (LearnableAttackStruct i in attacksToLearn)
+            foreach (LearnableAttackStruct learnableAttack in LearnableAttacksList)
             {
-                attackListToReturn.Add(i.attack);
+                attackListToReturn.Add(learnableAttack.attack);
             }
             return attackListToReturn;
         }
         set
         {
-            attacks = value;
+            attacksList = value;
         }
     }
 
-    public List<int> attackLevels
+    public List<int> attacksLevelsList
     {
         get
         {
             List<int> attackLevelListToReturn = new List<int>();
-            foreach (LearnableAttackStruct i in attacksToLearn)
+            foreach (LearnableAttackStruct learnableAttack in LearnableAttacksList)
             {
-                attackLevelListToReturn.Add(i.level);
+                attackLevelListToReturn.Add(learnableAttack.level);
             }
             return attackLevelListToReturn;
         }
     }
-
-
 }

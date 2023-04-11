@@ -20,7 +20,7 @@ public class PokemonBehaviour : MonoBehaviour
     private Sprite _frontSprite;
     private Sprite _backSprite;
     private Attack[] _attacks;
-    private List<PokemonData> _evolves = new List<PokemonData>();
+    private List<ScriptableEvolves.EvolveStruct> _evolves = new List<ScriptableEvolves.EvolveStruct>();
 
     public PokemonData Data { get { return _data; } }
     public int Id { get { return _id; } }
@@ -36,7 +36,7 @@ public class PokemonBehaviour : MonoBehaviour
     public Sprite FrontSprite { get { return _frontSprite; } }
     public Sprite BackSprite { get { return _backSprite; } }
     public Attack[] Attacks { get { return _attacks; } }
-    public List<PokemonData> Evolves { get { return _evolves; } }
+    public List<ScriptableEvolves.EvolveStruct> Evolves { get { return _evolves; } }
     public float CurrentHP { get { return _currentHP; } set { _currentHP = value; } }
 
     private void Start()
@@ -52,7 +52,7 @@ public class PokemonBehaviour : MonoBehaviour
         _specialDefense = _data.SpecialDefense;
         _frontSprite = _data.FrontSprite;
         _backSprite = _data.BackSprite;
-        _attacks = _data.Attacks;
+        _attacks = _data.DefaultAttacks;
         _evolves = _data.Evolves;
         _currentHP = _maxHP;
     }
